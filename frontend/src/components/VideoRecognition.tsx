@@ -39,13 +39,21 @@ const VideoRecognition: React.FC = () => {
     try {
       setError(null)
       const mediaStream = await navigator.mediaDevices.getUserMedia({ 
-        video: { width: 640, height: 480 },
+        video: { 
+          width: 640, 
+          height: 480,
+          facingMode: 'user' // Use front-facing camera
+        },
         audio: false 
       })
       setStream(mediaStream)
       
       if (videoRef.current) {
         videoRef.current.srcObject = mediaStream
+        // Ensure video plays immediately
+        videoRef.current.onloadedmetadata = () => {
+          videoRef.current?.play()
+        }
       }
     } catch (err) {
       setError('Unable to access camera. Please check permissions.')
@@ -176,11 +184,13 @@ const VideoRecognition: React.FC = () => {
                   sx={{ 
                     width: '100%', 
                     height: 360, 
-                    bgcolor: '#f5f5f5',
+                    bgcolor: '#000',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    mb: 2
+                    mb: 2,
+                    overflow: 'hidden',
+                    position: 'relative'
                   }}
                 >
                   {stream ? (
@@ -193,13 +203,30 @@ const VideoRecognition: React.FC = () => {
                         width: '100%', 
                         height: '100%', 
                         objectFit: 'cover',
-                        borderRadius: 4
+                        borderRadius: 4,
+                        transform: 'scaleX(-1)' // Mirror the video so user sees themselves normally
                       }}
                     />
                   ) : (
                     <Box sx={{ textAlign: 'center', color: 'text.secondary' }}>
                       <Videocam sx={{ fontSize: 64, mb: 1 }} />
                       <Typography>Click "Start Camera" to begin</Typography>
+                    </Box>
+                  )}
+                  
+                  {stream && (
+                    <Box sx={{ 
+                      position: 'absolute', 
+                      bottom: 10, 
+                      left: 10, 
+                      bgcolor: 'rgba(0,0,0,0.7)', 
+                      color: 'white',
+                      px: 1,
+                      py: 0.5,
+                      borderRadius: 1,
+                      fontSize: '0.75rem'
+                    }}>
+                      Camera Active
                     </Box>
                   )}
                 </Paper>

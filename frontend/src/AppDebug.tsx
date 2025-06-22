@@ -9,15 +9,20 @@ import {
   Tabs,
   Tab,
   Box,
+  Alert,
 } from '@mui/material'
 import { ictusTheme } from './theme/theme'
+
+// Import components one by one to test
 import FASTAssessment from './components/FASTAssessment'
-import EnhancedFASTAssessment from './components/EnhancedFASTAssessment'
 import VideoRecognition from './components/VideoRecognition'
-import EnhancedVideoRecognition from './components/EnhancedVideoRecognition'
 import VoiceRecognition from './components/VoiceRecognition'
 import EmergencyAlert from './components/EmergencyAlert'
-import AgentStatus from './components/AgentStatus'
+
+// Comment out the enhanced components for now
+// import EnhancedFASTAssessment from './components/EnhancedFASTAssessment'
+// import EnhancedVideoRecognition from './components/EnhancedVideoRecognition'
+// import AgentStatus from './components/AgentStatus'
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -41,7 +46,7 @@ function TabPanel(props: TabPanelProps) {
   )
 }
 
-function App() {
+function AppDebug() {
   const [tabValue, setTabValue] = useState(0)
 
   const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {
@@ -55,21 +60,22 @@ function App() {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              ICTUS - AI Stroke Detection System
+              ICTUS - AI Stroke Detection System (Debug Mode)
             </Typography>
           </Toolbar>
         </AppBar>
         
         <Container maxWidth="lg" sx={{ mt: 2 }}>
+          <Alert severity="info" sx={{ mb: 2 }}>
+            Debug Mode: Testing basic components only
+          </Alert>
+          
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <Tabs value={tabValue} onChange={handleTabChange} aria-label="Ictus navigation tabs">
               <Tab label="FAST Assessment" />
-              <Tab label="AI-Enhanced FAST" />
               <Tab label="Video Analysis" />
-              <Tab label="AI-Enhanced Video" />
               <Tab label="Voice Analysis" />
               <Tab label="Emergency" />
-              <Tab label="Agent Status" />
             </Tabs>
           </Box>
           
@@ -78,22 +84,14 @@ function App() {
           </TabPanel>
           
           <TabPanel value={tabValue} index={1}>
-            <EnhancedFASTAssessment />
-          </TabPanel>
-          
-          <TabPanel value={tabValue} index={2}>
             <VideoRecognition />
           </TabPanel>
           
-          <TabPanel value={tabValue} index={3}>
-            <EnhancedVideoRecognition />
-          </TabPanel>
-          
-          <TabPanel value={tabValue} index={4}>
+          <TabPanel value={tabValue} index={2}>
             <VoiceRecognition />
           </TabPanel>
           
-          <TabPanel value={tabValue} index={5}>
+          <TabPanel value={tabValue} index={3}>
             <EmergencyAlert 
               patientData={{
                 name: "John Doe",
@@ -102,14 +100,10 @@ function App() {
               }}
             />
           </TabPanel>
-          
-          <TabPanel value={tabValue} index={6}>
-            <AgentStatus />
-          </TabPanel>
         </Container>
       </Box>
     </ThemeProvider>
   )
 }
 
-export default App
+export default AppDebug
