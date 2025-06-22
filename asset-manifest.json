@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/UCBHackathon2025/static/css/main.e6c13ad2.css",
+    "main.js": "/UCBHackathon2025/static/js/main.2c13b040.js",
+    "static/js/453.670e15c7.chunk.js": "/UCBHackathon2025/static/js/453.670e15c7.chunk.js",
+    "index.html": "/UCBHackathon2025/index.html",
+    "main.e6c13ad2.css.map": "/UCBHackathon2025/static/css/main.e6c13ad2.css.map",
+    "main.2c13b040.js.map": "/UCBHackathon2025/static/js/main.2c13b040.js.map",
+    "453.670e15c7.chunk.js.map": "/UCBHackathon2025/static/js/453.670e15c7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.2c13b040.js"
+  ]
+}
