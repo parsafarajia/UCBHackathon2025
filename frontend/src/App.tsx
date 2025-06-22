@@ -13,7 +13,7 @@ import {
 import { ictusTheme } from './theme/theme'
 import FASTAssessment from './components/FASTAssessment'
 import EnhancedFASTAssessment from './components/EnhancedFASTAssessment'
-import VideoRecognition from './components/VideoRecognition'
+import StrokeChatbot from './components/StrokeChatbot'
 import EnhancedVideoRecognition from './components/EnhancedVideoRecognition'
 import VoiceRecognition from './components/VoiceRecognition'
 import EmergencyAlert from './components/EmergencyAlert'
@@ -65,7 +65,7 @@ function App() {
             <Tabs value={tabValue} onChange={handleTabChange} aria-label="Ictus navigation tabs">
               <Tab label="FAST Assessment" />
               <Tab label="AI-Enhanced FAST" />
-              <Tab label="Video Analysis" />
+              <Tab label="AI Chatbot" />
               <Tab label="AI-Enhanced Video" />
               <Tab label="Voice Analysis" />
               <Tab label="Emergency" />
@@ -82,7 +82,7 @@ function App() {
           </TabPanel>
           
           <TabPanel value={tabValue} index={2}>
-            <VideoRecognition />
+            <StrokeChatbot />
           </TabPanel>
           
           <TabPanel value={tabValue} index={3}>
