@@ -1,0 +1,14 @@
+runtime: python311
+
+env_variables:
+  GOOGLE_GENAI_USE_VERTEXAI: "FALSE"
+  GOOGLE_API_KEY: "AIzaSyBk9WYIPXXR5dTEHHaOHTiZH2sDqJQDNlI"
+
+automatic_scaling:
+  min_instances: 1
+  max_instances: 10
+  target_cpu_utilization: 0.6
+
+handlers:
+- url: /.*
+  script: auto

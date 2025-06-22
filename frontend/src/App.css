@@ -1,0 +1,62 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+.vital-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.severity-critical {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+.severity-warning {
+  color: #f57c00;
+  font-weight: bold;
+}
+
+.severity-normal {
+  color: #388e3c;
+  font-weight: bold;
+}
+
+.emergency-alert {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.patient-card {
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.patient-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.vital-chart {
+  margin: 20px 0;
+  height: 300px;
+}

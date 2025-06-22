@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    environment:
+      - GOOGLE_GENAI_USE_VERTEXAI=FALSE
+      - GOOGLE_API_KEY=AIzaSyBk9WYIPXXR5dTEHHaOHTiZH2sDqJQDNlI
+    volumes:
+      - ./multi_tool_agent:/app/multi_tool_agent
+    networks:
+      - app-network
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
